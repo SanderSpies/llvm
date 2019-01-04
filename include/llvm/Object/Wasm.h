@@ -238,6 +238,7 @@ private:
   Error parseLinkingSectionSymtab(ReadContext &Ctx);
   Error parseLinkingSectionComdat(ReadContext &Ctx);
   Error parseRelocSection(StringRef Name, ReadContext &Ctx);
+  Error parseGcOptInSection(ReadContext &Ctx);
 
   wasm::WasmObjectHeader Header;
   std::vector<WasmSection> Sections;

@@ -178,7 +178,8 @@ enum : unsigned {
   WASM_SEC_START = 8,    // Start function declaration
   WASM_SEC_ELEM = 9,     // Elements section
   WASM_SEC_CODE = 10,    // Function bodies (code)
-  WASM_SEC_DATA = 11     // Data segments
+  WASM_SEC_DATA = 11,     // Data segments
+  WASM_GC_OPT_IN = 42
 };
 
 // Type immediate encodings used in various contexts.

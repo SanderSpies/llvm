@@ -305,10 +305,26 @@ Error WasmObjectFile::parseSection(WasmSection &Sec) {
     return parseCodeSection(Ctx);
   case wasm::WASM_SEC_DATA:
     return parseDataSection(Ctx);
+  case wasm::WASM_GC_OPT_IN:
+    return parseGcOptInSection(Ctx);
   default:
     return make_error<GenericBinaryError>("Bad section type",
                                           object_error::parse_failed);
   }
+}
+
+Error WasmObjectFile::parseGcOptInSection(ReadContext &Ctx) {
+  uint32_t GcVersion = readUint8(Ctx);
+  if (GcVersion != 1) {
+    return make_error<GenericBinaryError>("Invalid GC opt-in version",
+                                            object_error::parse_failed);
+  }
+  // Ctx.Ptr += 4;
+  
+  // if (Ctx.Ptr != Ctx.End)
+  //   return make_error<GenericBinaryError>("GC opt-in section ended prematurely",
+  //                                         object_error::parse_failed);
+  return Error::success();
 }
 
 Error WasmObjectFile::parseNameSection(ReadContext &Ctx) {
