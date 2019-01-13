@@ -315,7 +315,7 @@ Error WasmObjectFile::parseSection(WasmSection &Sec) {
 
 Error WasmObjectFile::parseGcOptInSection(ReadContext &Ctx) {
   uint32_t GcVersion = readUint8(Ctx);
-  if (GcVersion != 1) {
+  if (GcVersion != 2) {
     return make_error<GenericBinaryError>("Invalid GC opt-in version",
                                             object_error::parse_failed);
   }
