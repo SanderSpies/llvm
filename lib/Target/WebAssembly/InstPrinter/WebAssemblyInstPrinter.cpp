@@ -297,6 +297,8 @@ const char *llvm::WebAssembly::TypeToString(wasm::ValType Ty) {
     return "f64";
   case wasm::ValType::V128:
     return "v128";
+  case wasm::ValType::ANYREF:
+    return "anyref";
   case wasm::ValType::EXCEPT_REF:
     return "except_ref";
   }
